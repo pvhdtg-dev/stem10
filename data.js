@@ -1,7 +1,296 @@
-// STEM 10 - DATA REPOSITORY (Toán - Lý - Hóa Lớp 10 GDPT 2018)
+// STEM 10 - NGÂN HÀNG KIẾN THỨC & CÂU HỎI TRẮC NGHIỆM ĐỒ SỘ (TOÁN - LÝ - HÓA 10)
 
 const CHAPTERS_DATA = [
-  // ================= TOÁN 10 =================
+  // =========================================================================
+  // ============================== HÓA HỌC 10 ===============================
+  // =========================================================================
+  {
+    id: "hoa-c1",
+    subject: "hoa",
+    subjectName: "Hóa học 10",
+    badgeColor: "bg-emerald-950 text-emerald-300 border-emerald-800",
+    chapterNumber: "Chương 1",
+    chapterTitle: "Cấu tạo nguyên tử",
+    summary: "Thành phần nguyên tử (p, n, e), đồng vị, nguyên tử khối trung bình, orbital nguyên tử (AO), quy tắc phân bố electron và cấu hình electron.",
+    keyFormulas: [
+      { name: "Số khối", formula: "$$A = Z + N, \\quad m_{\\text{nguyên tử}} \\approx A\\text{ (amu)}$$" },
+      { name: "Nguyên tử khối trung bình", formula: "$$\\overline{A} = \\frac{A_1 x_1 + A_2 x_2 + \\dots + A_k x_k}{100}$$" },
+      { name: "Thứ tự mức năng lượng", formula: "$$1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p < 5s < 4d\\dots$$" }
+    ],
+    theoryHtml: `
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+        <div class="p-3.5 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+          <h4 class="font-bold text-emerald-400 text-sm">1. Thành phần nguyên tử</h4>
+          <p>• <strong>Hạt nhân:</strong> Gồm proton ($p$, mang điện tích $+1e$, $m_p \\approx 1\\text{ amu}$) và neutron ($n$, không mang điện, $m_n \\approx 1\\text{ amu}$).</p>
+          <p>• <strong>Vỏ nguyên tử:</strong> Gồm electron ($e$, mang điện tích $-1e$, $m_e \\approx 0.00055\\text{ amu}$).</p>
+          <p>• Nguyên tử trung hòa về điện: $\\text{Số } p = \\text{Số } e = Z$ (Số hiệu nguyên tử).</p>
+        </div>
+        <div class="p-3.5 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+          <h4 class="font-bold text-emerald-400 text-sm">2. Đồng vị & Orbital nguyên tử</h4>
+          <p>• <strong>Đồng vị:</strong> Cùng số proton ($Z$), khác số neutron ($N$) $\\implies$ khác số khối $A$.</p>
+          <p>• <strong>AO $s$:</strong> Dạng hình cầu. <strong>AO $p$:</strong> Dạng hình số 8 nổi gồm 3 orbital $p_x, p_y, p_z$.</p>
+          <p>• Số electron tối đa: lớp thứ $n$ có tối đa $2n^2$ electron ($n \\le 4$). Phân lớp $s^2, p^6, d^{10}, f^{14}$.</p>
+        </div>
+        <div class="p-3.5 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+          <h4 class="font-bold text-emerald-400 text-sm">3. Cấu hình electron đặc biệt</h4>
+          <p>• $\\text{Cr} (Z=24)$: $[\\text{Ar}] 3d^5 4s^1$ (bán bão hòa phân lớp $d$).</p>
+          <p>• $\\text{Cu} (Z=29)$: $[\\text{Ar}] 3d^{10} 4s^1$ (bão hòa phân lớp $d$).</p>
+        </div>
+      </div>
+    `,
+    methodsHtml: `
+      <div class="space-y-3 text-xs text-slate-300">
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+          <h5 class="font-bold text-emerald-400 mb-1">Dạng 1: Bài toán tìm hạt cơ bản (p, n, e)</h5>
+          <p>Lập hệ phương trình: Tổng hạt $S = 2Z + N$; Hạt mang điện nhiều hơn không mang điện: $2Z - N = \\Delta$. Áp dụng chặn $1 \\le N/Z \\le 1.5$.</p>
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+          <h5 class="font-bold text-emerald-400 mb-1">Dạng 2: Đồng vị & % khối lượng trong hợp chất</h5>
+          <p>Tính $\\overline{A} \\to$ Tính phân tử khối hợp chất $\\to \\%m(^{A_1}\\text{X}) = \\frac{a \\cdot A_1 \\cdot x_1\\%}{M_{\\text{hợp chất}}} \\times 100\\%$.</p>
+        </div>
+      </div>
+    `,
+    essaysHtml: `
+      <div class="space-y-3 text-xs text-slate-300">
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+          <p class="font-bold text-white">Bài 1: Hợp chất $M_2X$ có tổng số hạt cơ bản là 140, số hạt mang điện nhiều hơn không mang điện là 44. Số khối của $M$ lớn hơn $X$ là 23. Tìm công thức phân tử của hợp chất.</p>
+          <p class="text-slate-400"><strong>Lời giải:</strong> Thiết lập hệ 4 phương trình 4 ẩn $\\implies Z_M = 19 (\\text{K}), Z_X = 8 (\\text{O}) \\implies$ Công thức phân tử là $\\text{K}_2\\text{O}$.</p>
+        </div>
+      </div>
+    `,
+    quizzes: [
+      {
+        id: "hoa1_01",
+        q: "Hạt cấu tạo nên lớp vỏ của nguyên tử là:",
+        options: ["Proton", "Neutron", "Electron", "Proton và neutron"],
+        answer: 2,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Lớp vỏ nguyên tử được cấu tạo bởi các electron (e) mang điện tích âm, chuyển động xung quanh hạt nhân."
+      },
+      {
+        id: "hoa1_02",
+        q: "Hạt cấu tạo nên hạt nhân của hầu hết các nguyên tử là:",
+        options: ["Electron và proton", "Proton và neutron", "Neutron và electron", "Chỉ có proton"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Hạt nhân nguyên tử được cấu tạo từ proton (p) và neutron (n). Riêng hạt nhân $^1_1\\text{H}$ chỉ có 1 proton, không có neutron."
+      },
+      {
+        id: "hoa1_03",
+        q: "Trong nguyên tử, các loại hạt mang điện là:",
+        options: ["Proton và neutron", "Proton và electron", "Neutron và electron", "Chỉ có electron"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Proton mang điện tích $+1e$, electron mang điện tích $-1e$. Neutron không mang điện."
+      },
+      {
+        id: "hoa1_04",
+        q: "Nguyên tử luôn trung hoà về điện vì:",
+        options: ["Số proton bằng số neutron", "Số proton bằng số electron", "Số neutron bằng số electron", "Hạt nhân không mang điện"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Trong nguyên tử trung hoà: số proton (điện tích dương) = số electron (điện tích âm) nên tổng điện tích bằng 0."
+      },
+      {
+        id: "hoa1_05",
+        q: "Electron được J.J. Thomson phát hiện năm 1897 thông qua thí nghiệm:",
+        options: ["Bắn phá hạt nhân vàng bằng tia α", "Tia âm cực (cathode-ray)", "Phân tích quang phổ hydrogen", "Thí nghiệm giọt dầu"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Năm 1897, J.J. Thomson nghiên cứu chùm tia cathode (tia âm cực) và phát hiện ra chùm hạt electron mang điện âm."
+      },
+      {
+        id: "hoa1_06",
+        q: "Mô hình hành tinh nguyên tử được đề xuất bởi:",
+        options: ["J.J. Thomson", "E. Rutherford", "N. Bohr", "J. Chadwick"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Năm 1911, E. Rutherford qua thí nghiệm bắn phá lá vàng mỏng bằng hạt α đã đề xuất mô hình hành tinh nguyên tử."
+      },
+      {
+        id: "hoa1_07",
+        q: "Trong thí nghiệm bắn phá lá vàng của Rutherford, phần lớn các hạt α:",
+        options: ["Bị bật ngược trở lại", "Đi lệch hướng nhiều", "Đi thẳng xuyên qua lá vàng", "Bị hấp thụ hoàn toàn"],
+        answer: 2,
+        level: "TH",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Đa số hạt α đi thẳng xuyên qua lá vàng chứng tỏ nguyên tử có cấu tạo rỗng, hạt nhân có kích thước vô cùng nhỏ so với nguyên tử."
+      },
+      {
+        id: "hoa1_08",
+        q: "Neutron được J. Chadwick phát hiện năm:",
+        options: ["1897", "1911", "1913", "1932"],
+        answer: 3,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Năm 1932, J. Chadwick phát hiện ra hạt neutron khi bắn phá hạt nhân Berili ($^9\\text{Be}$) bằng hạt $\\alpha$."
+      },
+      {
+        id: "hoa1_09",
+        q: "Số khối ($A$) của nguyên tử được tính bằng công thức:",
+        options: ["$A = Z + N$", "$A = Z - N$", "$A = Z \\times N$", "$A = Z + E$"],
+        answer: 0,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Số khối $A = Z$ (tổng số proton) $+ N$ (tổng số neutron)."
+      },
+      {
+        id: "hoa1_10",
+        q: "Khối lượng của nguyên tử tập trung chủ yếu ở:",
+        options: ["Lớp vỏ electron", "Hạt nhân", "Proton", "Electron"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 1: Thành phần nguyên tử",
+        explanation: "Khối lượng nguyên tử tập trung hầu hết ở hạt nhân vì khối lượng electron rất nhỏ ($m_e \\approx \\frac{1}{1836} m_p$)."
+      },
+      {
+        id: "hoa1_11",
+        q: "Nguyên tố hoá học là tập hợp các nguyên tử có cùng:",
+        options: ["Số khối", "Số neutron", "Số proton (số hiệu nguyên tử Z)", "Khối lượng nguyên tử"],
+        answer: 2,
+        level: "NB",
+        topic: "Bài 2: Nguyên tố hoá học",
+        explanation: "Nguyên tố hoá học là tập hợp các nguyên tử có cùng số proton ($Z$) trong hạt nhân."
+      },
+      {
+        id: "hoa1_12",
+        q: "Đồng vị là những nguyên tử của cùng một nguyên tố, có cùng số proton nhưng khác nhau về:",
+        options: ["Số electron", "Số neutron", "Số hiệu nguyên tử", "Cấu hình electron"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 2: Nguyên tố hoá học",
+        explanation: "Đồng vị có cùng số proton ($Z$) nhưng khác nhau số neutron ($N$), do đó số khối $A$ khác nhau."
+      },
+      {
+        id: "hoa1_13",
+        q: "Kí hiệu $^{23}_{11}\\text{Na}$ cho biết:",
+        options: ["Số khối là 11, số hiệu là 23", "Số khối là 23, số hiệu nguyên tử là 11", "Có 23 proton và 11 neutron", "Có 11 proton và 23 neutron"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 2: Nguyên tố hoá học",
+        explanation: "Kí hiệu $^{A}_{Z}\\text{X}$: chỉ số trên $A = 23$ là số khối, chỉ số dưới $Z = 11$ là số hiệu nguyên tử."
+      },
+      {
+        id: "hoa1_14",
+        q: "Đơn vị khối lượng nguyên tử (amu) được định nghĩa bằng:",
+        options: ["Khối lượng nguyên tử hydrogen", "$1/12$ khối lượng nguyên tử carbon-12", "Khối lượng nguyên tử oxygen-16", "Khối lượng 1 proton"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 2: Nguyên tố hoá học",
+        explanation: "$1\\text{ amu} = \\frac{1}{12} m(^{12}\\text{C}) \\approx 1.6605 \\times 10^{-27}\\text{ kg}$."
+      },
+      {
+        id: "hoa1_15",
+        q: "Đồng vị phóng xạ $^{14}\\text{C}$ được ứng dụng phổ biến trong khảo cổ học để:",
+        options: ["Chữa bệnh ung thư", "Xác định niên đại cổ vật", "Chụp phim X-quang", "Chiếu xạ khử trùng thực phẩm"],
+        answer: 1,
+        level: "TH",
+        topic: "Bài 2: Nguyên tố hoá học",
+        explanation: "$^{14}\\text{C}$ có chu kỳ bán rã 5730 năm, được dùng để định tuổi các mẫu vật hữu cơ cổ vật (carbon dating)."
+      },
+      {
+        id: "hoa1_16",
+        q: "Mô hình nguyên tử hiện đại mô tả chuyển động của electron như:",
+        options: ["Chuyển động trên quỹ đạo tròn xác định", "Chuyển động tạo thành đám mây electron, không theo quỹ đạo xác định", "Đứng yên quanh hạt nhân", "Chuyển động thẳng đều"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Theo cơ học lượng tử, electron chuyển động rất nhanh quanh hạt nhân không theo quỹ đạo xác định, tạo thành đám mây electron."
+      },
+      {
+        id: "hoa1_17",
+        q: "Orbital nguyên tử (AO) là vùng không gian xung quanh hạt nhân mà tại đó:",
+        options: ["Chứa đúng 1 electron", "Xác suất tìm thấy electron là lớn nhất (khoảng 90%)", "Electron chuyển động tròn đều", "Không thể có mặt electron"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "AO là khu vực không gian quanh hạt nhân mà xác suất tìm thấy electron ở đó khoảng 90%."
+      },
+      {
+        id: "hoa1_18",
+        q: "Các orbital $s$ có dạng hình học là:",
+        options: ["Hình số 8 nổi", "Hình cầu", "Hình elip", "Hình hoa mai"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Orbital $s$ có dạng hình cầu đối xứng tâm hạt nhân. Orbital $p$ có dạng hình số 8 nổi."
+      },
+      {
+        id: "hoa1_19",
+        q: "Phân lớp $p$ có số lượng orbital (AO) là:",
+        options: ["1", "3", "5", "7"],
+        answer: 1,
+        level: "NB",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Phân lớp $p$ có 3 orbital ($p_x, p_y, p_z$), chứa tối đa $2 \\times 3 = 6$ electron."
+      },
+      {
+        id: "hoa1_20",
+        q: "Lớp electron thứ 3 ($M$, $n = 3$) chứa tối đa bao nhiêu electron?",
+        options: ["8", "18", "32", "2"],
+        answer: 1,
+        level: "TH",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Số electron tối đa trong lớp $n$ là $2n^2$. Với $n = 3 \\implies 2 \\times 3^2 = 18$ electron (gồm $3s^2, 3p^6, 3d^{10}$)."
+      },
+      {
+        id: "hoa1_21",
+        q: "Cấu hình electron của nguyên tử $\\text{Na} (Z = 11)$ là:",
+        options: ["$1s^2 2s^2 2p^6 3s^2$", "$1s^2 2s^2 2p^6 3s^1$", "$1s^2 2s^2 2p^5 3s^2$", "$1s^2 2s^2 2p^6 3p^1$"],
+        answer: 1,
+        level: "TH",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Điền 11 electron theo thứ tự năng lượng: $1s^2 2s^2 2p^6 3s^1$."
+      },
+      {
+        id: "hoa1_22",
+        q: "Cấu hình electron của nguyên tử $\\text{Fe} (Z = 26)$ là:",
+        options: ["$1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$", "$1s^2 2s^2 2p^6 3s^2 3p^6 3d^8$", "$1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 3d^6$", "$1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 4p^6$"],
+        answer: 0,
+        level: "VD",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Theo mức năng lượng: $1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 3d^6$. Viết theo thứ tự lớp: $1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$ (hay $[\\text{Ar}] 3d^6 4s^2$)."
+      },
+      {
+        id: "hoa1_23",
+        q: "Nguyên tử của nguyên tố nào sau đây có cấu hình electron lớp ngoài cùng dạng $3s^2 3p^5$?",
+        options: ["$\\text{Na} (Z=11)$", "$\\text{Mg} (Z=12)$", "$\\text{Cl} (Z=17)$", "$\\text{Ar} (Z=18)$"],
+        answer: 2,
+        level: "TH",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Cấu hình đầy đủ: $1s^2 2s^2 2p^6 3s^2 3p^5$ có tổng 17e $\\implies Z = 17$ (Chlorine)."
+      },
+      {
+        id: "hoa1_24",
+        q: "Cấu hình electron của ion $\\text{Cu}^{2+} (Z = 29)$ là:",
+        options: ["$[\\text{Ar}] 3d^9$", "$[\\text{Ar}] 3d^8 4s^1$", "$[\\text{Ar}] 3d^{10} 4s^1$", "$[\\text{Ar}] 3d^7 4s^2$"],
+        answer: 0,
+        level: "VD",
+        topic: "Bài 3: Cấu trúc lớp vỏ electron",
+        explanation: "Nguyên tử $\\text{Cu}: [\\text{Ar}] 3d^{10} 4s^1$. Nhường 2e: bớt 1e ở $4s$ và 1e ở $3d \\implies \\text{Cu}^{2+}$ có cấu hình $[\\text{Ar}] 3d^9$."
+      },
+      {
+        id: "hoa1_25",
+        q: "Nguyên tử $X$ có tổng số hạt cơ bản là 34, số hạt mang điện nhiều hơn số hạt không mang điện là 10. Số khối của $X$ là:",
+        options: ["23", "24", "22", "25"],
+        answer: 0,
+        level: "VD",
+        topic: "Bài 4: Ôn tập chương 1",
+        explanation: "Hệ: $2Z + N = 34$ và $2Z - N = 10 \\implies 4Z = 44 \\implies Z = 11, N = 12 \\implies A = 11 + 12 = 23$ (Natri $\\text{Na}$)."
+      }
+    ],
+    keywords: ["hoa", "nguyen tu", "proton", "neutron", "electron", "dong vi", "orbital", "cau hinh e", "kim loai", "phi kim"]
+  },
+
+  // =========================================================================
+  // ============================== TOÁN HỌC 10 ==============================
+  // =========================================================================
   {
     id: "toan-c1",
     subject: "toan",
@@ -9,83 +298,100 @@ const CHAPTERS_DATA = [
     badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
     chapterNumber: "Chương 1",
     chapterTitle: "Mệnh đề & Tập hợp",
-    summary: "Nền tảng tư duy logic, mệnh đề phủ định, kéo theo, các phép toán giao, hợp, hiệu trên tập số thực $\\mathbb{R}$.",
+    summary: "Mệnh đề logic, phủ định, kéo theo, tương đương, ký hiệu $\\forall, \\exists$, các phép toán giao, hợp, hiệu, phần bù trên tập số thực $\\mathbb{R}$.",
     keyFormulas: [
       { name: "Phủ định $\\forall, \\exists$", formula: "$$\\overline{\\forall x \\in X, P(x)} \\iff \\exists x \\in X, \\overline{P(x)}$$" },
       { name: "Số tập con", formula: "$$\\text{Số tập con của tập } n \\text{ phần tử} = 2^n$$" },
-      { name: "Phép toán tập hợp", formula: "$$A \\cap B, \\quad A \\cup B, \\quad A \\setminus B, \\quad C_E A$$" }
+      { name: "Giao & Hợp", formula: "$$x \\in A \\cap B \\iff x \\in A \\text{ và } x \\in B; \\quad x \\in A \\cup B \\iff x \\in A \\text{ hoặc } x \\in B$$" }
     ],
     theoryHtml: `
-      <div class="space-y-3.5 text-xs text-slate-300 leading-relaxed">
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
         <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
-          <h4 class="font-bold text-blue-400 text-sm">1. Mệnh đề logic & Phủ định</h4>
-          <p>• <strong>Mệnh đề:</strong> Khẳng định chỉ có thể đúng hoặc sai, không thể vừa đúng vừa sai.</p>
-          <p>• <strong>Mệnh đề phủ định ($\\overline{P}$):</strong> $\\overline{P}$ đúng khi $P$ sai, và ngược lại.</p>
+          <h4 class="font-bold text-blue-400 text-sm">1. Mệnh đề & Phủ định</h4>
+          <p>• <strong>Mệnh đề:</strong> Khẳng định có tính đúng hoặc sai rõ ràng.</p>
           <p>• <strong>Mệnh đề kéo theo ($P \\Rightarrow Q$):</strong> Chỉ sai khi $P$ đúng mà $Q$ sai ($P$ là điều kiện đủ, $Q$ là điều kiện cần).</p>
+          <p>• <strong>Quy tắc phủ định:</strong> Phủ định của $>$ là $\\le$; phủ định của $\\forall$ là $\\exists$.</p>
         </div>
         <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
-          <h4 class="font-bold text-blue-400 text-sm">2. Các phép toán trên tập hợp</h4>
-          <p>• <strong>Giao ($A \\cap B$):</strong> $x \\in A$ và $x \\in B$.</p>
-          <p>• <strong>Hợp ($A \\cup B$):</strong> $x \\in A$ hoặc $x \\in B$.</p>
-          <p>• <strong>Hiệu ($A \\setminus B$):</strong> $x \\in A$ và $x \\notin B$.</p>
-          <p>• <strong>Phần bù ($C_{\\mathbb{R}} A$):</strong> $\\mathbb{R} \\setminus A$.</p>
-        </div>
-        <div class="p-3 bg-amber-950/40 rounded-xl border border-amber-600/30 text-amber-200">
-          ⚠️ <strong>Lưu ý:</strong> Phủ định của dấu "$>$" là "$\\le$" (không phải "$<$").
+          <h4 class="font-bold text-blue-400 text-sm">2. Các phép toán tập hợp trên trục số</h4>
+          <p>• Giao ($A \\cap B$): Lấy phần chung. Hợp ($A \\cup B$): Lấy tất cả. Hiệu ($A \\setminus B$): Thuộc $A$ nhưng không thuộc $B$.</p>
         </div>
       </div>
     `,
-    methodsHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
-          <h5 class="font-bold text-indigo-400 mb-1">Dạng 1: Phép toán trên trục số</h5>
-          <p>Quy tắc 4 bước: Vẽ trục số $\\to$ Biểu diễn khoảng/đoạn $\\to$ Gạch bỏ phần không thuộc định nghĩa $\\to$ Đọc kết quả các khoảng còn lại.</p>
-        </div>
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
-          <h5 class="font-bold text-indigo-400 mb-1">Dạng 2: Bài toán chứa tham số $m$</h5>
-          <p>Điều kiện $A \\subset B$ hoặc $A \\cap B = \\emptyset$: Thiết lập bất phương trình giữa các đầu mút của khoảng đoạn.</p>
-        </div>
-      </div>
-    `,
-    essaysHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
-          <p class="font-bold text-white">Bài 1: Cho $A = [-3; 2]$ và $B = (0; 5)$. Tìm $A \\cap B, A \\cup B, A \\setminus B$.</p>
-          <div class="p-2 bg-slate-900 rounded-lg text-slate-200">
-            • $A \\cap B = (0; 2]$<br/>
-            • $A \\cup B = [-3; 5)$<br/>
-            • $A \\setminus B = [-3; 0]$
-          </div>
-        </div>
-      </div>
-    `,
+    methodsHtml: `<p class="text-xs text-slate-300">• Phép toán khoảng đoạn: Vẽ trục số $\\to$ Biểu diễn tập hợp $\\to$ Gạch bỏ phần không thỏa mãn $\\to$ Đọc nghiệm.</p>`,
+    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán thực tế khảo sát: Số học sinh giỏi Toán, Lý, Hóa qua biểu đồ Venn $\\implies |T \\cup L \\cup H| = 38$, số học sinh không giỏi môn nào là $45 - 38 = 7$.</p>`,
     quizzes: [
       {
-        id: "toan1_q1",
-        level: "NB",
-        type: "single",
-        question: "Trong các khẳng định sau, câu nào là một mệnh đề?",
-        options: ["Số 17 là số nguyên tố.", "Hôm nay trời đẹp quá!", "x + 2 > 5.", "Bạn đã làm bài tập chưa?"],
+        id: "toan1_01",
+        q: "Trong các câu sau, câu nào là một mệnh đề?",
+        options: ["Số 17 là số nguyên tố.", "Hôm nay trời đẹp quá!", "$x + 2 > 5$.", "Bạn có thích học Toán không?"],
         answer: 0,
-        explanation: "Số 17 là số nguyên tố là khẳng định có tính đúng/sai rõ ràng nên là mệnh đề."
+        level: "NB",
+        topic: "Bài 1: Mệnh đề",
+        explanation: "'Số 17 là số nguyên tố' là một khẳng định có tính đúng/sai rõ ràng (cụ thể là mệnh đề đúng)."
       },
       {
-        id: "toan1_q2",
+        id: "toan1_02",
+        q: "Mệnh đề phủ định của mệnh đề $P: \"\\forall x \\in \\mathbb{R}, x^2 + 1 > 0\"$ là:",
+        options: ["$\\overline{P}: \"\\exists x \\in \\mathbb{R}, x^2 + 1 \\le 0\"$", "$\\overline{P}: \"\\forall x \\in \\mathbb{R}, x^2 + 1 < 0\"$", "$\\overline{P}: \"\\exists x \\in \\mathbb{R}, x^2 + 1 > 0\"$", "$\\overline{P}: \"\\forall x \\in \\mathbb{R}, x^2 + 1 \\le 0\"$"],
+        answer: 0,
         level: "TH",
-        type: "single",
-        question: "Cho tập hợp $A = [-2; 3)$ và $B = [1; 5]$. Khi đó $A \\cap B$ bằng:",
+        topic: "Bài 1: Mệnh đề",
+        explanation: "Quy tắc phủ định: $\\forall \\to \\exists$ và đổi dấu $>$ thành $\\le$."
+      },
+      {
+        id: "toan1_03",
+        q: "Cho mệnh đề kéo theo $P \\Rightarrow Q$. Khẳng định nào sau đây diễn đạt đúng vai trò của $P$ và $Q$?",
+        options: ["$P$ là điều kiện cần để có $Q$", "$Q$ là điều kiện đủ để có $P$", "$P$ là điều kiện đủ để có $Q$", "$Q$ là điều kiện cần và đủ để có $P$"],
+        answer: 2,
+        level: "NB",
+        topic: "Bài 1: Mệnh đề",
+        explanation: "Trong mệnh đề $P \\Rightarrow Q$, $P$ là điều kiện đủ để có $Q$, và $Q$ là điều kiện cần để có $P$."
+      },
+      {
+        id: "toan1_04",
+        q: "Cho tập hợp $X = \\{x \\in \\mathbb{N} \\mid (x^2 - 4)(2x - 1) = 0\\}$. Số phần tử của tập hợp $X$ là:",
+        options: ["1", "2", "3", "0"],
+        answer: 0,
+        level: "TH",
+        topic: "Bài 2: Tập hợp",
+        explanation: "Phương trình có nghiệm $x = 2, x = -2, x = 0.5$. Do $x \\in \\mathbb{N}$ nên chỉ nhận $x = 2 \\implies X = \\{2\\}$ có đúng 1 phần tử."
+      },
+      {
+        id: "toan1_05",
+        q: "Tập hợp $A = \\{a; b; c\\}$ có tất cả bao nhiêu tập hợp con?",
+        options: ["3", "6", "8", "9"],
+        answer: 2,
+        level: "NB",
+        topic: "Bài 2: Tập hợp",
+        explanation: "Số tập con của tập hợp có $n$ phần tử là $2^n = 2^3 = 8$."
+      },
+      {
+        id: "toan1_06",
+        q: "Cho hai tập hợp $A = [-2; 3)$ và $B = [1; 5]$. Khi đó tập hợp $A \\cap B$ là:",
         options: ["$[-2; 5]$", "$[1; 3)$", "$(1; 3)$", "$[-2; 1)$"],
         answer: 1,
-        explanation: "Phần tử chung của cả 2 tập hợp là $[1; 3)$."
+        level: "TH",
+        topic: "Bài 3: Phép toán tập hợp",
+        explanation: "Phần tử thuộc cả $A$ và $B$ là nửa khoảng $[1; 3)$."
       },
       {
-        id: "toan1_q3",
+        id: "toan1_07",
+        q: "Cho $A = (-3; 2]$ và $B = [0; 5)$. Khi đó tập hợp $A \\setminus B$ là:",
+        options: ["$(-3; 0]$", "$(-3; 0)$", "$(2; 5)$", "$[0; 2]$"],
+        answer: 1,
         level: "VD",
-        type: "single",
-        question: "Số tập con có đúng 2 phần tử của tập hợp có 5 phần tử là:",
-        options: ["10", "20", "25", "32"],
+        topic: "Bài 3: Phép toán tập hợp",
+        explanation: "$A \\setminus B$ là phần thuộc $A$ nhưng không thuộc $B$: $(-3; 2] \\setminus [0; 5) = (-3; 0)$ (do $0 \\in B$ nên bị loại)."
+      },
+      {
+        id: "toan1_08",
+        q: "Cho hai tập hợp $A = [m-1; m+2)$ và $B = [2; 6]$. Điều kiện để $A \\cap B \\ne \\emptyset$ là:",
+        options: ["$0 < m \\le 7$", "$m \\le 0$ hoặc $m > 7$", "$1 < m < 6$", "$0 \\le m \\le 7$"],
         answer: 0,
-        explanation: "$C_5^2 = \\frac{5 \\times 4}{2} = 10$."
+        level: "VDC",
+        topic: "Bài 3: Phép toán tập hợp",
+        explanation: "$A \\cap B = \\emptyset \\iff m+2 \\le 2$ hoặc $m-1 > 6 \\iff m \\le 0$ hoặc $m > 7$. Do đó giao khác rỗng khi $0 < m \\le 7$."
       }
     ],
     keywords: ["toan", "menh de", "tap hop", "giao", "hop", "hieu", "phan bu", "truc so"]
@@ -97,182 +403,55 @@ const CHAPTERS_DATA = [
     subjectName: "Toán 10",
     badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
     chapterNumber: "Chương 2",
-    chapterTitle: "Bất phương trình & Hệ BPT bậc nhất hai ẩn",
-    summary: "Biểu diễn miền nghiệm trên mặt phẳng $Oxy$, bài toán quy hoạch tuyến tính và tối ưu hóa thực tế.",
+    chapterTitle: "Bất phương trình bậc nhất hai ẩn",
+    summary: "Bất phương trình và Hệ BPT bậc nhất hai ẩn, biểu diễn miền nghiệm hình học $Oxy$, bài toán quy hoạch tuyến tính và tối ưu hóa thực tế.",
     keyFormulas: [
       { name: "Dạng tổng quát", formula: "$$ax + by + c \\le 0 \\quad (a^2 + b^2 \\ne 0)$$" },
-      { name: "Định lý tối ưu đa giác", formula: "$$F(x, y) = ax + by \\text{ đạt GTLN/GTNN tại các đỉnh}$$" }
+      { name: "Định lý tối ưu đa giác", formula: "$$F(x, y) = ax + by \\text{ đạt GTLN/GTNN tại một trong các đỉnh}$$" }
     ],
     theoryHtml: `
       <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-          <h4 class="font-bold text-blue-400 text-sm">1. Quy trình biểu diễn miền nghiệm $Oxy$</h4>
-          <p>1. Vẽ đường thẳng bờ $\\Delta: ax + by + c = 0$ (nét liền nếu $\\ge, \\le$; nét đứt nếu $>, <$).</p>
-          <p>2. Chọn điểm thử $M_0(x_0; y_0) \\notin \\Delta$ (ưu tiên $O(0;0)$).</p>
-          <p>3. Tính giá trị và kết luận nửa mặt phẳng nghiệm.</p>
-        </div>
+        <p>• Đường thẳng bờ $\\Delta: ax + by + c = 0$ (nét liền nếu có dấu $=$, nét đứt nếu dấu ngặt).</p>
+        <p>• Chọn điểm thử $M_0(x_0; y_0) \\notin \\Delta$ (thường chọn $O(0;0)$) để xác định nửa mặt phẳng nghiệm.</p>
       </div>
     `,
-    methodsHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <p>• Xác định tọa độ các đỉnh của miền đa giác nghiệm $\\to$ Tính giá trị hàm mục tiêu $F(x, y)$ tại từng đỉnh $\\to$ So sánh tìm Max/Min.</p>
-      </div>
-    `,
-    essaysHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <p>Bài toán xưởng sản xuất: Tìm kế hoạch sản xuất để lợi nhuận $F(x, y) = 40x + 30y$ đạt cực đại $\\to F_{\\max} = 2000$ triệu đồng tại $(20; 40)$.</p>
-      </div>
-    `,
+    methodsHtml: `<p class="text-xs text-slate-300">• Tối ưu hóa: Tìm tọa độ các đỉnh của miền nghiệm đa giác $\\to$ Thay vào hàm $F(x, y) \\to$ So sánh.</p>`,
+    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán xưởng sản xuất: Tối ưu hóa lợi nhuận $F(x, y) = 40x + 30y$ đạt cực đại tại $(20; 40) \\implies F_{\\max} = 2000$ triệu đồng.</p>`,
     quizzes: [
       {
-        id: "toan2_q1",
-        level: "NB",
-        type: "single",
-        question: "Bất phương trình nào sau đây là BPT bậc nhất hai ẩn?",
-        options: ["$2x^2 + y \\le 0$", "$2x - 3y + 1 > 0$", "$xy + 1 \\ge 0$", "$x + y + z < 4$"],
+        id: "toan2_01",
+        q: "Bất phương trình nào sau đây là bất phương trình bậc nhất hai ẩn?",
+        options: ["$2x^2 + 3y \\le 0$", "$2x - y + 3 > 0$", "$xy + x \\ge 1$", "$x + y + z < 4$"],
         answer: 1,
-        explanation: "$2x - 3y + 1 > 0$ chỉ chứa bậc 1 của 2 ẩn $x, y$."
+        level: "NB",
+        topic: "Bài 1: BPT bậc nhất hai ẩn",
+        explanation: "Bất phương trình bậc nhất hai ẩn có dạng $ax + by + c > 0$ (hoặc $<, \\ge, \\le$) với $a, b$ không đồng thời bằng 0."
       },
       {
-        id: "toan2_q2",
+        id: "toan2_02",
+        q: "Điểm nào sau đây thuộc miền nghiệm của bất phương trình $2x - y + 1 > 0$?",
+        options: ["$(1; 2)$", "$(0; 2)$", "$(-1; 0)$", "$(1; 4)$"],
+        answer: 0,
         level: "TH",
-        type: "single",
-        question: "Điểm nào sau đây thuộc miền nghiệm của BPT $x - 2y + 4 \\ge 0$?",
-        options: ["$(0; 3)$", "$(0; 0)$", "$(1; 4)$", "$(-5; 0)$"],
+        topic: "Bài 1: BPT bậc nhất hai ẩn",
+        explanation: "Thay $(1; 2)$ vào BPT: $2(1) - 2 + 1 = 1 > 0$ (thỏa mãn)."
+      },
+      {
+        id: "toan2_03",
+        q: "Cho hệ BPT $\\begin{cases} x \\ge 0 \\\\ y \\ge 0 \\\\ x + y \\le 3 \\end{cases}$. Giá trị lớn nhất của $F(x, y) = 2x + 3y$ bằng:",
+        options: ["6", "9", "0", "5"],
         answer: 1,
-        explanation: "Thay $(0; 0)$: $0 - 0 + 4 = 4 \\ge 0$ (đúng)."
+        level: "VD",
+        topic: "Bài 2: Hệ BPT & Tối ưu",
+        explanation: "Các đỉnh của miền tam giác là $O(0;0), A(3;0), B(0;3)$. Tính $F(O)=0, F(A)=6, F(B)=9 \\implies F_{\\max} = 9$ tại $(0; 3)$."
       }
     ],
     keywords: ["toan", "bat phuong trinh", "he bpt", "bac nhat hai an", "mien nghiem", "quy hoach tuyen tinh"]
   },
 
-  {
-    id: "toan-c3",
-    subject: "toan",
-    subjectName: "Toán 10",
-    badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
-    chapterNumber: "Chương 3",
-    chapterTitle: "Hàm số bậc hai & Dấu tam thức bậc hai",
-    summary: "Khảo sát Parabol, quy tắc xét dấu tam thức bậc hai 'Trong trái - Ngoài cùng', giải phương trình vô tỉ.",
-    keyFormulas: [
-      { name: "Tọa độ đỉnh Parabol", formula: "$$I\\left(-\\frac{b}{2a}; -\\frac{\\Delta}{4a}\\right), \\quad x = -\\frac{b}{2a}$$" },
-      { name: "Dấu tam thức bậc hai", formula: "$$f(x) = ax^2 + bx + c, \\quad \\Delta = b^2 - 4ac$$" },
-      { name: "Điều kiện luôn dương", formula: "$$f(x) > 0, \\forall x \\in \\mathbb{R} \\iff a > 0 \\text{ và } \\Delta < 0$$" }
-    ],
-    theoryHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-          <h4 class="font-bold text-blue-400 text-sm">Định lý về dấu tam thức bậc hai</h4>
-          <p>• $\\Delta < 0$: $f(x)$ luôn cùng dấu với hệ số $a$ với mọi $x \\in \\mathbb{R}$.</p>
-          <p>• $\\Delta = 0$: $f(x)$ cùng dấu với $a$ với mọi $x \\ne -\\frac{b}{2a}$.</p>
-          <p>• $\\Delta > 0$: 2 nghiệm phân biệt: <strong>Trong khoảng trái dấu $a$, Ngoài khoảng cùng dấu $a$</strong>.</p>
-        </div>
-      </div>
-    `,
-    methodsHtml: `<p class="text-xs text-slate-300">• Giải BPT bậc 2: Tìm nghiệm $\\to$ Lập bảng xét dấu $\\to$ Kết luận.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán vòm cổng Parabol: Chiều cao tối đa của xe tải chở hàng rộng $4\\text{ m}$ đi qua cổng cao $8\\text{ m}$ rộng $8\\text{ m}$ là $6\\text{ m}$.</p>`,
-    quizzes: [
-      {
-        id: "toan3_q1",
-        level: "NB",
-        type: "single",
-        question: "Hoành độ đỉnh của parabol $y = x^2 - 4x + 3$ là:",
-        options: ["$x = 2$", "$x = -2$", "$x = 4$", "$x = 1$"],
-        answer: 0,
-        explanation: "$x_I = -\\frac{b}{2a} = -\\frac{-4}{2} = 2$."
-      },
-      {
-        id: "toan3_q2",
-        level: "TH",
-        type: "single",
-        question: "Tập nghiệm của BPT $x^2 - 3x - 4 \\le 0$ là:",
-        options: ["$[-1; 4]$", "$(-1; 4)$", "$(-\\infty; -1] \\cup [4; +\\infty)$", "$[-4; 1]$"],
-        answer: 0,
-        explanation: "Phương trình có 2 nghiệm $-1$ và $4$, $a = 1 > 0$ nên lấy nghiệm trong đoạn $[-1; 4]$."
-      }
-    ],
-    keywords: ["toan", "ham so bac hai", "parabol", "tam thuc bac hai", "delta", "xet dau", "phuong trinh can"]
-  },
-
-  {
-    id: "toan-c4",
-    subject: "toan",
-    subjectName: "Toán 10",
-    badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
-    chapterNumber: "Chương 4",
-    chapterTitle: "Hệ thức lượng trong tam giác",
-    summary: "Định lý Sin, Định lý Cosin, bộ 5 công thức tính diện tích tam giác và bài toán giải tam giác thực tế.",
-    keyFormulas: [
-      { name: "Định lý Cosin", formula: "$$a^2 = b^2 + c^2 - 2bc \\cos A$$" },
-      { name: "Định lý Sin", formula: "$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$$" },
-      { name: "Diện tích tam giác", formula: "$$S = \\frac{1}{2}ab\\sin C = \\frac{abc}{4R} = pr = \\sqrt{p(p-a)(p-b)(p-c)}$$" }
-    ],
-    theoryHtml: `<div class="space-y-2 text-xs text-slate-300"><p>• Góc bù nhau: $\\sin(180^\\circ - \\alpha) = \\sin \\alpha, \\cos(180^\\circ - \\alpha) = -\\cos \\alpha$.</p><p>• Đường trung tuyến: $m_a^2 = \\frac{2(b^2+c^2)-a^2}{4}$.</p></div>`,
-    methodsHtml: `<p class="text-xs text-slate-300">• Biết 2 cạnh & góc xen giữa $\\to$ Dùng Cosin tìm cạnh 3. Biết 1 cạnh & 2 góc $\\to$ Dùng Sin.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán đo chiều cao tháp không thể tới chân: Tính góc ngoài tam giác $\\to$ Định lý Sin $\\to h = 32.8\\text{ m}$.</p>`,
-    quizzes: [
-      {
-        id: "toan4_q1",
-        level: "NB",
-        type: "single",
-        question: "Cho góc $\\alpha \\in (90^\\circ; 180^\\circ)$. Khẳng định nào sau đây đúng?",
-        options: ["$\\cos \\alpha > 0$", "$\\tan \\alpha < 0$", "$\\sin \\alpha < 0$", "$\\cot \\alpha > 0$"],
-        answer: 1,
-        explanation: "Với góc tù $\\alpha$, $\\sin \\alpha > 0$ và $\\cos \\alpha < 0 \\implies \\tan \\alpha < 0$."
-      },
-      {
-        id: "toan4_q2",
-        level: "TH",
-        type: "single",
-        question: "Cho tam giác $ABC$ có $a = 8, \\widehat{A} = 30^\\circ$. Bán kính đường tròn ngoại tiếp $R$ bằng:",
-        options: ["$4$", "$8$", "$16$", "$8\\sqrt{3}$"],
-        answer: 1,
-        explanation: "$2R = \\frac{a}{\\sin A} = \\frac{8}{\\sin 30^\\circ} = 16 \\implies R = 8$."
-      }
-    ],
-    keywords: ["toan", "he thuc luong", "tam giac", "dinh ly sin", "dinh ly cosin", "heron", "dien tich", "ban kinh R r"]
-  },
-
-  {
-    id: "toan-c5",
-    subject: "toan",
-    subjectName: "Toán 10",
-    badgeColor: "bg-blue-950 text-blue-300 border-blue-800",
-    chapterNumber: "Chương 5",
-    chapterTitle: "Vectơ & Các phép toán Vectơ",
-    summary: "Tổng hiệu vectơ, quy tắc 3 điểm, hình bình hành, tích vô hướng, tọa độ vectơ trong mặt phẳng Oxy.",
-    keyFormulas: [
-      { name: "Quy tắc 3 điểm & HBH", formula: "$$\\vec{AB} + \\vec{BC} = \\vec{AC}, \\quad \\vec{AB} + \\vec{AD} = \\vec{AC}$$" },
-      { name: "Tích vô hướng", formula: "$$\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos(\\vec{a}, \\vec{b}) = x_1 x_2 + y_1 y_2$$" },
-      { name: "Điều kiện vuông góc", formula: "$$\\vec{a} \\perp \\vec{b} \\iff \\vec{a} \\cdot \\vec{b} = 0 \\iff x_1 x_2 + y_1 y_2 = 0$$" }
-    ],
-    theoryHtml: `<div class="space-y-2 text-xs text-slate-300"><p>• Trung điểm: $\\vec{MA} + \\vec{MB} = 2\\vec{MI}$. Trọng tâm: $\\vec{MA} + \\vec{MB} + \\vec{MC} = 3\\vec{MG}$.</p><p>• Khoảng cách: $AB = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}$.</p></div>`,
-    methodsHtml: `<p class="text-xs text-slate-300">• Chứng minh 3 điểm thẳng hàng: $\\vec{AB} = k\\vec{AC}$.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Ứng dụng Vật lý: Tính độ lớn hợp lực $F = 100\\sqrt{37}\\text{ N}$ và công của lực kéo $A = 30.414\\text{ kJ}$.</p>`,
-    quizzes: [
-      {
-        id: "toan5_q1",
-        level: "NB",
-        type: "single",
-        question: "Cho hình bình hành $ABCD$. Đẳng thức vectơ nào sau đây đúng?",
-        options: ["$\\vec{AB} + \\vec{AC} = \\vec{AD}$", "$\\vec{AB} + \\vec{AD} = \\vec{AC}$", "$\\vec{AB} - \\vec{AD} = \\vec{AC}$", "$\\vec{BA} + \\vec{BC} = \\vec{DB}$"],
-        answer: 1,
-        explanation: "Theo quy tắc hình bình hành: $\\vec{AB} + \\vec{AD} = \\vec{AC}$."
-      },
-      {
-        id: "toan5_q2",
-        level: "TH",
-        type: "single",
-        question: "Trong mặt phẳng $Oxy$, cho $\\vec{a} = (1; 2)$ và $\\vec{b} = (4; -2)$. Tích vô hướng $\\vec{a} \\cdot \\vec{b}$ bằng:",
-        options: ["$8$", "$0$", "$-2$", "$4$"],
-        answer: 1,
-        explanation: "$\\vec{a} \\cdot \\vec{b} = 1(4) + 2(-2) = 0$ (hai vectơ vuông góc)."
-      }
-    ],
-    keywords: ["toan", "vecto", "tich vo huong", "toa do oxy", "quy tac hinh binh hanh", "hop luc"]
-  },
-
-  // ================= VẬT LÝ 10 =================
+  // =========================================================================
+  // ============================== VẬT LÝ 10 ================================
+  // =========================================================================
   {
     id: "ly-c1",
     subject: "ly",
@@ -280,7 +459,7 @@ const CHAPTERS_DATA = [
     badgeColor: "bg-amber-950 text-amber-300 border-amber-800",
     chapterNumber: "Chương 1",
     chapterTitle: "Mô tả chuyển động (Động học)",
-    summary: "Sai số phép đo, quãng đường và độ dịch chuyển, bộ 3 công thức chuyển động biến đổi đều, rơi tự do, đồ thị $v-t$.",
+    summary: "Sai số đo lường, độ dịch chuyển vs quãng đường, tốc độ vs vận tốc, chuyển động thẳng biến đổi đều, rơi tự do, đồ thị động học.",
     keyFormulas: [
       { name: "Phương trình vận tốc", formula: "$$v = v_0 + at$$" },
       { name: "Độ dịch chuyển", formula: "$$d = v_0 t + \\frac{1}{2}at^2$$" },
@@ -288,35 +467,52 @@ const CHAPTERS_DATA = [
       { name: "Rơi tự do ($v_0 = 0$)", formula: "$$v = gt, \\quad h = \\frac{1}{2}gt^2, \\quad v = \\sqrt{2gh}, \\quad t = \\sqrt{\\frac{2h}{g}}$$" }
     ],
     theoryHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
         <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
           <h4 class="font-bold text-amber-400 text-sm">Quãng đường vs Độ dịch chuyển</h4>
-          <p>• <strong>Quãng đường ($s$):</strong> Vô hướng, luôn dương ($s \\ge 0$).</p>
-          <p>• <strong>Độ dịch chuyển ($\\vec{d}$):</strong> Vectơ nối điểm đầu đến điểm cuối, có thể âm, dương hoặc bằng 0.</p>
-          <p>• Chuyển động thẳng không đổi chiều thì $d = s$.</p>
+          <p>• Quãng đường $s$: Vô hướng, luôn $\\ge 0$. Độ dịch chuyển $\\vec{d}$: Đại lượng vectơ.</p>
+          <p>• Chuyển động thẳng biến đổi đều: Nhanh dần đều $a \\cdot v > 0$; Chậm dần đều $a \\cdot v < 0$.</p>
         </div>
       </div>
     `,
-    methodsHtml: `<p class="text-xs text-slate-300">• Nhanh dần đều: $a \\cdot v > 0$. Chậm dần đều: $a \\cdot v < 0$.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán rơi tự do: Quãng đường trong 2 giây cuối là $60\\text{ m} \\implies t = 4\\text{ s}, h = 80\\text{ m}, v = 40\\text{ m/s}$.</p>`,
+    methodsHtml: `<p class="text-xs text-slate-300">• Áp dụng bộ 3 công thức động học theo từng giai đoạn chuyển động.</p>`,
+    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán rơi tự do trong 2 giây cuối rơi $60\\text{ m} \\implies t = 4\\text{ s}, h = 80\\text{ m}, v = 40\\text{ m/s}$.</p>`,
     quizzes: [
       {
-        id: "ly1_q1",
-        level: "NB",
-        type: "single",
-        question: "Đơn vị của gia tốc trong hệ SI là:",
+        id: "ly1_01",
+        q: "Đơn vị của gia tốc trong hệ đo lường quốc tế SI là:",
         options: ["$\\text{m/s}$", "$\\text{m/s}^2$", "$\\text{km/h}$", "$\\text{m} \\cdot \\text{s}$"],
         answer: 1,
+        level: "NB",
+        topic: "Bài 1: Chuyển động thẳng biến đổi đều",
         explanation: "Gia tốc có đơn vị là mét trên giây bình phương ($\\text{m/s}^2$)."
       },
       {
-        id: "ly1_q2",
+        id: "ly1_02",
+        q: "Một chất điểm chuyển động dọc trục $Ox$ có phương trình $x = 4 - 2t + 3t^2$ ($x$ tính bằng m, $t$ tính bằng s). Gia tốc của chất điểm bằng:",
+        options: ["$3\\text{ m/s}^2$", "$-2\\text{ m/s}^2$", "$6\\text{ m/s}^2$", "$1.5\\text{ m/s}^2$"],
+        answer: 2,
         level: "TH",
-        type: "single",
-        question: "Thả rơi tự do một vật từ độ cao $45\\text{ m}$. Lấy $g = 10\\text{ m/s}^2$. Thời gian rơi chạm đất là:",
-        options: ["$3\\text{ s}$", "$4.5\\text{ s}$", "$9\\text{ s}$", "$2\\text{ s}$"],
+        topic: "Bài 1: Chuyển động thẳng biến đổi đều",
+        explanation: "So sánh với phương trình $x = x_0 + v_0 t + \\frac{1}{2}at^2 \\implies \\frac{1}{2}a = 3 \\implies a = 6\\text{ m/s}^2$."
+      },
+      {
+        id: "ly1_03",
+        q: "Một ô tô đang chạy với vận tốc $15\\text{ m/s}$ thì hãm phanh chuyển động chậm dần đều với gia tốc có độ lớn $2\\text{ m/s}^2$. Quãng đường ô tô đi được đến khi dừng hẳn là:",
+        options: ["$56.25\\text{ m}$", "$112.5\\text{ m}$", "$28.125\\text{ m}$", "$7.5\\text{ m}$"],
         answer: 0,
-        explanation: "$t = \\sqrt{\\frac{2h}{g}} = \\sqrt{\\frac{2 \\times 45}{10}} = 3\\text{ s}$."
+        level: "VD",
+        topic: "Bài 1: Chuyển động thẳng biến đổi đều",
+        explanation: "Áp dụng $v^2 - v_0^2 = 2as \\implies 0 - 15^2 = 2(-2)s \\implies s = 56.25\\text{ m}$."
+      },
+      {
+        id: "ly1_04",
+        q: "Thả rơi tự do một hòn đá từ độ cao $125\\text{ m}$ xuống đất. Lấy $g = 10\\text{ m/s}^2$. Thời gian hòn đá chạm đất là:",
+        options: ["$2.5\\text{ s}$", "$5\\text{ s}$", "$12.5\\text{ s}$", "$10\\text{ s}$"],
+        answer: 1,
+        level: "TH",
+        topic: "Bài 2: Rơi tự do",
+        explanation: "$t = \\sqrt{\\frac{2h}{g}} = \\sqrt{\\frac{2 \\times 125}{10}} = \\sqrt{25} = 5\\text{ s}$."
       }
     ],
     keywords: ["ly", "vat ly", "chuyen dong", "bien doi deu", "roi tu do", "gia toc", "do dich chuyen", "van toc", "toc do"]
@@ -329,7 +525,7 @@ const CHAPTERS_DATA = [
     badgeColor: "bg-amber-950 text-amber-300 border-amber-800",
     chapterNumber: "Chương 2",
     chapterTitle: "Động lực học (Ba định luật Newton & Các lực cơ học)",
-    summary: "3 Định luật Newton, trọng lực, lực ma sát trượt, lực đàn hồi (Định luật Hooke), lực căng dây, lực đẩy Archimedes.",
+    summary: "Định luật I, II, III Newton, quán tính, trọng lực, lực ma sát trượt, lực đàn hồi (Định luật Hooke), lực căng dây, lực đẩy Archimedes.",
     keyFormulas: [
       { name: "Định luật II Newton", formula: "$$\\vec{F}_{hl} = m\\vec{a} \\iff \\vec{a} = \\frac{\\vec{F}}{m}$$" },
       { name: "Lực ma sát trượt", formula: "$$F_{mst} = \\mu_t \\cdot N$$" },
@@ -337,132 +533,43 @@ const CHAPTERS_DATA = [
       { name: "Lực đẩy Archimedes", formula: "$$F_A = \\rho \\cdot g \\cdot V$$" }
     ],
     theoryHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-          <h4 class="font-bold text-amber-400 text-sm">Ba Định luật Newton cốt lõi</h4>
-          <p>• <strong>ĐL I (Quán tính):</strong> Hợp lực bằng 0 $\\to$ Đang đứng yên tiếp tục đứng yên, đang chuyển động tiếp tục chuyển động thẳng đều.</p>
-          <p>• <strong>ĐL II:</strong> $\\vec{F} = m\\vec{a}$.</p>
-          <p>• <strong>ĐL III (Tương tác):</strong> $\\vec{F}_{BA} = -\\vec{F}_{AB}$ (cùng độ lớn, ngược chiều, đặt vào 2 vật khác nhau nên không triệt tiêu).</p>
-        </div>
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+        <p>• <strong>ĐL I Newton:</strong> Hợp lực bằng 0 $\\implies$ vật bảo toàn trạng thái vận tốc (quán tính).</p>
+        <p>• <strong>ĐL II Newton:</strong> $\\vec{F} = m\\vec{a}$. Khối lượng đặc trưng cho mức quán tính.</p>
+        <p>• <strong>ĐL III Newton:</strong> $\\vec{F}_{BA} = -\\vec{F}_{AB}$ (cặp lực và phản lực đặt vào 2 vật khác nhau nên không triệt tiêu).</p>
       </div>
     `,
-    methodsHtml: `<p class="text-xs text-slate-300">• Phương pháp động lực học: Chọn vật $\\to$ Phân tích lực $\\to$ Chiếu lên trục $Ox, Oy \\to a = \\frac{F_x - F_{ms}}{m}$.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Bài toán mặt phẳng nghiêng góc $30^\\circ$: $a = g(\\sin 30^\\circ - \\mu\\cos 30^\\circ) = 4.134\\text{ m/s}^2$.</p>`,
+    methodsHtml: `<p class="text-xs text-slate-300">• Phương pháp động lực học: Biểu diễn lực $\\to$ Chiếu lên $Ox, Oy \\to a = \\frac{F_k\\cos\\alpha - \\mu N}{m}$.</p>`,
+    essaysHtml: `<p class="text-xs text-slate-300">• Hệ vật máy Atwood: Gia tốc $a = 2\\text{ m/s}^2$, lực căng dây $T = 24\\text{ N}$.</p>`,
     quizzes: [
       {
-        id: "ly2_q1",
-        level: "NB",
-        type: "single",
-        question: "Đại lượng nào đặc trưng cho mức quán tính của một vật?",
+        id: "ly2_01",
+        q: "Đại lượng nào đặc trưng cho mức quán tính của một vật?",
         options: ["Vận tốc", "Khối lượng", "Lực tác dụng", "Gia tốc"],
         answer: 1,
-        explanation: "Khối lượng là đại lượng đặc trưng cho mức quán tính của vật."
+        level: "NB",
+        topic: "Bài 1: Ba định luật Newton",
+        explanation: "Theo Định luật I Newton, khối lượng là đại lượng đặc trưng cho mức quán tính của vật."
       },
       {
-        id: "ly2_q2",
+        id: "ly2_02",
+        q: "Khi một lực $F$ tác dụng vào vật khối lượng $m_1$ gây ra gia tốc $a_1 = 6\\text{ m/s}^2$, tác dụng vào $m_2$ gây gia tốc $a_2 = 3\\text{ m/s}^2$. Khi tác dụng vào vật $m = m_1 + m_2$ thì gia tốc là:",
+        options: ["$9\\text{ m/s}^2$", "$4.5\\text{ m/s}^2$", "$2\\text{ m/s}^2$", "$1.5\\text{ m/s}^2$"],
+        answer: 2,
         level: "TH",
-        type: "single",
-        question: "Treo vật có khối lượng $m = 200\\text{ g}$ vào lò xo có độ cứng $k = 50\\text{ N/m}$. Lấy $g = 10\\text{ m/s}^2$. Độ dãn của lò xo ở vị trí cân bằng là:",
-        options: ["$4\\text{ cm}$", "$2\\text{ cm}$", "$0.4\\text{ cm}$", "$40\\text{ cm}$"],
+        topic: "Bài 1: Ba định luật Newton",
+        explanation: "$\\frac{1}{a} = \\frac{1}{a_1} + \\frac{1}{a_2} = \\frac{1}{6} + \\frac{1}{3} = \\frac{1}{2} \\implies a = 2\\text{ m/s}^2$."
+      },
+      {
+        id: "ly2_03",
+        q: "Treo một vật $m = 500\\text{ g}$ vào lò xo có độ cứng $k = 100\\text{ N/m}$. Lấy $g = 10\\text{ m/s}^2$. Độ dãn của lò xo khi cân bằng là:",
+        options: ["$5\\text{ cm}$", "$2\\text{ cm}$", "$0.5\\text{ cm}$", "$50\\text{ cm}$"],
         answer: 0,
-        explanation: "$\\Delta l = \\frac{mg}{k} = \\frac{0.2 \\times 10}{50} = 0.04\\text{ m} = 4\\text{ cm}$."
+        level: "TH",
+        topic: "Bài 2: Các lực cơ học",
+        explanation: "$\\Delta l = \\frac{mg}{k} = \\frac{0.5 \\times 10}{100} = 0.05\\text{ m} = 5\\text{ cm}$."
       }
     ],
     keywords: ["ly", "dong luc hoc", "newton", "quan tinh", "ma sat", "dan hoi", "hooke", "archimedes", "ap luc"]
-  },
-
-  // ================= HÓA HỌC 10 =================
-  {
-    id: "hoa-c1",
-    subject: "hoa",
-    subjectName: "Hóa học 10",
-    badgeColor: "bg-emerald-950 text-emerald-300 border-emerald-800",
-    chapterNumber: "Chương 1",
-    chapterTitle: "Cấu tạo nguyên tử",
-    summary: "Hạt nhân ($p, n$), vỏ electron ($e$), đồng vị, nguyên tử khối trung bình, orbital nguyên tử (AO) và quy tắc viết cấu hình electron.",
-    keyFormulas: [
-      { name: "Số khối", formula: "$$A = Z + N, \\quad m_{\\text{nguyên tử}} \\approx A\\text{ (amu)}$$" },
-      { name: "Nguyên tử khối trung bình", formula: "$$\\overline{A} = \\frac{A_1 x_1 + A_2 x_2 + \\dots}{100}$$" },
-      { name: "Thứ tự mức năng lượng", formula: "$$1s \\; 2s \\; 2p \\; 3s \\; 3p \\; 4s \\; 3d \\; 4p \\dots$$" }
-    ],
-    theoryHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-          <h4 class="font-bold text-emerald-400 text-sm">Cấu hình electron đặc biệt</h4>
-          <p>• <strong>Chromium ($Z = 24$):</strong> $[\\text{Ar}] 3d^5 4s^1$ (bán bão hòa phân lớp $d$).</p>
-          <p>• <strong>Copper ($Z = 29$):</strong> $[\\text{Ar}] 3d^{10} 4s^1$ (bão hòa phân lớp $d$).</p>
-          <p>• Lớp ngoài cùng $1, 2, 3e$: Kim loại; $5, 6, 7e$: Phi kim; $8e$: Khí hiếm.</p>
-        </div>
-      </div>
-    `,
-    methodsHtml: `<p class="text-xs text-slate-300">• Tìm hạt: Tổng hạt $S = 2Z + N$. Giới hạn bền $1 \\le \\frac{N}{Z} \\le 1.5$.</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Tính $\%$ khối lượng đồng vị $^{35}\\text{Cl}$ trong muối $\\text{KClO}_3$ là $21.65\\%$.</p>`,
-    quizzes: [
-      {
-        id: "hoa1_q1",
-        level: "NB",
-        type: "single",
-        question: "Hạt mang điện tích âm trong nguyên tử là:",
-        options: ["Proton", "Neutron", "Electron", "Hạt nhân"],
-        answer: 2,
-        explanation: "Electron mang điện tích âm $-1e$."
-      },
-      {
-        id: "hoa1_q2",
-        level: "TH",
-        type: "single",
-        question: "Cấu hình electron của nguyên tử Sulfur ($Z = 16$) là:",
-        options: ["$1s^2 2s^2 2p^6 3s^2 3p^4$", "$1s^2 2s^2 2p^6 3s^2 3p^6$", "$1s^2 2s^2 2p^6 3s^1 3p^5$", "$1s^2 2s^2 2p^4 3s^2 3p^6$"],
-        answer: 0,
-        explanation: "Tổng $16e \\implies 1s^2 2s^2 2p^6 3s^2 3p^4$."
-      }
-    ],
-    keywords: ["hoa", "nguyen tu", "proton", "neutron", "electron", "dong vi", "orbital", "cau hinh e", "kim loai", "phi kim"]
-  },
-
-  {
-    id: "hoa-c2",
-    subject: "hoa",
-    subjectName: "Hóa học 10",
-    badgeColor: "bg-emerald-950 text-emerald-300 border-emerald-800",
-    chapterNumber: "Chương 2",
-    chapterTitle: "Bảng tuần hoàn & Định luật tuần hoàn",
-    summary: "Cấu tạo BTH (ô, chu kỳ, nhóm A, B), quy luật biến đổi tuần hoàn (bán kính, độ âm điện, tính kim loại/phi kim, acid/base).",
-    keyFormulas: [
-      { name: "Vị trí trong BTH", formula: "$$\\text{Ô} = Z, \\quad \\text{Chu kỳ} = \\text{Số lớp } e, \\quad \\text{Nhóm A} = e \\text{ hóa trị}$$" },
-      { name: "Hóa trị với O và H", formula: "$$\\text{Hóa trị cao nhất với O} + \\text{Hóa trị với H} = 8$$" }
-    ],
-    theoryHtml: `
-      <div class="space-y-3 text-xs text-slate-300">
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-          <h4 class="font-bold text-emerald-400 text-sm">Quy luật biến đổi tuần hoàn</h4>
-          <p>• <strong>Trong Chu kỳ (Trái $\\to$ Phải):</strong> Bán kính giảm, Độ âm điện tăng, Tính kim loại giảm, Tính phi kim tăng, Tính acid tăng.</p>
-          <p>• <strong>Trong Nhóm A (Trên $\\to$ Dưới):</strong> Bán kính tăng, Độ âm điện giảm, Tính kim loại tăng, Tính phi kim giảm, Tính base tăng.</p>
-        </div>
-      </div>
-    `,
-    methodsHtml: `<p class="text-xs text-slate-300">• So sánh bán kính ion cùng số electron: $Z$ càng lớn thì bán kính càng nhỏ ($r(\\text{Al}^{3+}) < r(\\text{Mg}^{2+}) < r(\\text{Na}^+) < r(\\text{F}^-) < r(\\text{O}^{2-})$).</p>`,
-    essaysHtml: `<p class="text-xs text-slate-300">• Phi kim $R$ có hợp chất khí $\\text{H}_2\\text{S}$, oxide cao nhất $\\text{SO}_3$, acid sulfuric $\\text{H}_2\\text{SO}_4$.</p>`,
-    quizzes: [
-      {
-        id: "hoa2_q1",
-        level: "NB",
-        type: "single",
-        question: "Số thứ tự chu kỳ trong Bảng tuần hoàn bằng:",
-        options: ["Số electron hóa trị", "Số lớp electron", "Số electron lớp ngoài cùng", "Số proton"],
-        answer: 1,
-        explanation: "Số thứ tự của chu kỳ luôn bằng số lớp electron trong nguyên tử."
-      },
-      {
-        id: "hoa2_q2",
-        level: "TH",
-        type: "single",
-        question: "Dãy nguyên tố nào sau đây được sắp xếp theo chiều tăng dần tính kim loại?",
-        options: ["$\\text{Na}, \\text{Mg}, \\text{Al}, \\text{K}$", "$\\text{Al}, \\text{Mg}, \\text{Na}, \\text{K}$", "$\\text{K}, \\text{Na}, \\text{Mg}, \\text{Al}$", "$\\text{Al}, \\text{Na}, \\text{Mg}, \\text{K}$"],
-        answer: 1,
-        explanation: "Trong chu kỳ 3: $\\text{Al} < \\text{Mg} < \\text{Na}$. Nhóm IA: $\\text{Na} < \\text{K} \\implies \\text{Al} < \\text{Mg} < \\text{Na} < \\text{K}$."
-      }
-    ],
-    keywords: ["hoa", "bang tuan hoan", "chu ky", "nhom a", "nhom b", "ban kinh nguyen tu", "do am dien", "tinh kim loai", "tinh phi kim"]
   }
 ];

@@ -1,6 +1,6 @@
-/* CSS Styles for STEM 10 Mobile Web */
+/* STEM 10 Pocket - Advanced Styles */
 
-/* Ẩn scrollbar cho tab ngang */
+/* Ẩn scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -9,67 +9,131 @@
   scrollbar-width: none;
 }
 
-/* Hiệu ứng trượt Modal mượt mà */
+/* Animations */
 @keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0.5;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(100%); opacity: 0.5; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .animate-slide-up {
   animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Tối ưu render KaTeX trên màn hình mobile */
+.animate-scale-in {
+  animation: scaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* KaTeX Mobile Optimization */
 .katex-display {
-  margin: 0.5em 0 !important;
+  margin: 0.4em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 .katex {
-  font-size: 1.05em;
+  font-size: 1.03em;
   text-rendering: optimizeLegibility;
 }
 
-/* Quiz Option Card Style */
+/* Exam & Quiz Options Style */
 .quiz-option {
-  transition: all 0.15s ease-in-out;
+  transition: all 0.18s ease-in-out;
+  cursor: pointer;
 }
 
-.quiz-option:active {
-  transform: scale(0.98);
+.quiz-option:hover:not(.disabled) {
+  border-color: #6366f1;
+  background-color: rgba(99, 102, 241, 0.12);
+  transform: translateX(4px);
 }
 
 .quiz-option.selected {
-  border-color: #6366f1 !important;
-  background-color: rgba(99, 102, 241, 0.15) !important;
+  border-color: #818cf8 !important;
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  color: #fff !important;
 }
 
 .quiz-option.correct {
   border-color: #10b981 !important;
-  background-color: rgba(16, 185, 129, 0.15) !important;
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  color: #6ee7b7 !important;
+  font-weight: 600;
 }
 
 .quiz-option.wrong {
   border-color: #ef4444 !important;
-  background-color: rgba(239, 68, 68, 0.15) !important;
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
 }
 
-/* Custom Scrollbar for Modal content */
+.quiz-option.disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* Nút Xem lời giải */
+.solution-toggle {
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.solution-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.5);
+}
+
+.solution-toggle.active {
+  background: linear-gradient(135deg, #475569, #334155);
+  box-shadow: none;
+}
+
+/* Hộp Lời giải Accordion */
+.explanation {
+  margin-top: 10px;
+  padding: 0 12px;
+  max-height: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.6), rgba(15, 23, 42, 0.8));
+  border-left: 3px solid #f59e0b;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.explanation.show {
+  padding: 12px;
+  max-height: 800px;
+  opacity: 1;
+}
+
+/* Scrollbar */
 #modalBody::-webkit-scrollbar,
-#randomQuizBody::-webkit-scrollbar {
+#mainContainer::-webkit-scrollbar {
   width: 4px;
 }
 
 #modalBody::-webkit-scrollbar-thumb,
-#randomQuizBody::-webkit-scrollbar-thumb {
+#mainContainer::-webkit-scrollbar-thumb {
   background-color: #334155;
   border-radius: 4px;
 }
