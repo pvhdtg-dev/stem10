@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>STEM 10 - Sổ Tay Tri Thức & Luyện Đề Toán - Lý - Hóa</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- KaTeX CDN để render công thức Toán, Lý, Hóa sắc nét -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex justify-center pb-24 selection:bg-indigo-500 selection:text-white">
+
+  <!-- Mobile Container -->
+  <div class="w-full max-w-md bg-slate-950 min-h-screen flex flex-col relative shadow-2xl border-x border-slate-800/60">
+
+    <!-- Header Sticky -->
+    <header class="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md px-4 pt-4 pb-3 border-b border-slate-800/80">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h1 class="text-base font-extrabold bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+              STEM 10 Pocket
+            </h1>
+            <p class="text-[10px] text-slate-400 font-medium">Toán • Vật Lý • Hóa Học (GDPT 2018)</p>
+          </div>
+        </div>
+        <button onclick="openRandomQuiz()" class="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-full text-xs font-semibold shadow-md active:scale-95 transition">
+          <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+          <span>Trộn đề thi</span>
+        </button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative">
+        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Tìm: delta, newton, cấu hình e, sin cos..."
+          class="w-full bg-slate-900/90 border border-slate-800 rounded-xl pl-10 pr-10 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-inner"
+        />
+        <button id="clearSearch" onclick="clearSearchInput()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Subject Tabs -->
+      <div class="flex gap-1.5 mt-3 overflow-x-auto no-scrollbar py-0.5">
+        <button onclick="setSubject('all')" id="tab-all" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-sm transition whitespace-nowrap">
+          Tất cả
+        </button>
+        <button onclick="setSubject('toan')" id="tab-toan" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-400 border border-slate-800/80 hover:text-slate-200 transition whitespace-nowrap">
+          📐 Toán 10
+        </button>
+        <button onclick="setSubject('ly')" id="tab-ly" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-400 border border-slate-800/80 hover:text-slate-200 transition whitespace-nowrap">
+          ⚡ Vật lý 10
+        </button>
+        <button onclick="setSubject('hoa')" id="tab-hoa" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-400 border border-slate-800/80 hover:text-slate-200 transition whitespace-nowrap">
+          🧪 Hóa học 10
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 space-y-3.5" id="mainContainer">
+      <!-- Cards list dynamically injected -->
+    </main>
+
+    <!-- Modal Xem Chi Tiết Bài Học -->
+    <div id="lessonModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex flex-col justify-end">
+      <div class="bg-slate-900 border-t border-slate-700/80 rounded-t-3xl max-h-[90vh] flex flex-col w-full max-w-md mx-auto animate-slide-up shadow-2xl">
+        
+        <!-- Modal Header -->
+        <div class="p-4 border-b border-slate-800 flex justify-between items-center sticky top-0 bg-slate-900/95 backdrop-blur z-10 rounded-t-3xl">
+          <div id="modalSubjectBadge"></div>
+          <button onclick="closeLessonModal()" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white transition">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Sub Tabs inside Modal (Lý thuyết | Dạng bài | Tự luận | Trắc nghiệm) -->
+        <div class="flex border-b border-slate-800 bg-slate-950/60 px-3 py-1.5 gap-1.5 overflow-x-auto no-scrollbar">
+          <button onclick="switchModalTab('theory')" id="mtab-theory" class="modal-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white whitespace-nowrap transition">
+            📖 Lý thuyết
+          </button>
+          <button onclick="switchModalTab('methods')" id="mtab-methods" class="modal-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+            💡 Dạng bài tập
+          </button>
+          <button onclick="switchModalTab('essays')" id="mtab-essays" class="modal-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+            ✍️ Tự luận
+          </button>
+          <button onclick="switchModalTab('quizzes')" id="mtab-quizzes" class="modal-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+            🎲 Trắc nghiệm
+          </button>
+        </div>
+
+        <!-- Modal Body Content -->
+        <div class="p-5 overflow-y-auto space-y-4" id="modalBody">
+          <!-- Dynamic Chapter details rendered here -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal Luyện Đề Trộn Ngẫu Nhiên (Random Quiz Generator) -->
+    <div id="randomQuizModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex flex-col justify-end">
+      <div class="bg-slate-900 border-t border-slate-700 rounded-t-3xl max-h-[92vh] flex flex-col w-full max-w-md mx-auto animate-slide-up shadow-2xl">
+        <div class="p-4 border-b border-slate-800 flex justify-between items-center sticky top-0 bg-slate-900/95 backdrop-blur z-10 rounded-t-3xl">
+          <div class="flex items-center gap-2">
+            <span class="p-1.5 bg-purple-900/60 border border-purple-700 text-purple-300 rounded-lg text-xs">
+              <i data-lucide="shuffle" class="w-4 h-4"></i>
+            </span>
+            <div>
+              <h3 class="text-sm font-bold text-white">Đề Thi Trắc Nghiệm Trộn Ngẫu Nhiên</h3>
+              <p class="text-[11px] text-slate-400" id="quizMetaCount">5 câu hỏi tổng hợp</p>
+            </div>
+          </div>
+          <button onclick="closeRandomQuizModal()" class="p-1.5 bg-slate-800 rounded-full text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="p-5 overflow-y-auto space-y-5" id="randomQuizBody">
+          <!-- Quiz Questions -->
+        </div>
+
+        <!-- Quiz Footer with Action -->
+        <div class="p-4 border-t border-slate-800 bg-slate-950/90 flex gap-2">
+          <button onclick="generateNewQuiz()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
+            <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+            <span>Đổi đề khác</span>
+          </button>
+          <button onclick="submitQuizAnswers()" class="flex-1 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs font-bold shadow-lg transition">
+            Nộp bài & Chấm điểm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-30 flex justify-center pointer-events-none">
+      <div class="w-full max-w-md bg-slate-950/95 backdrop-blur-md border-t border-slate-800/80 flex justify-around py-2.5 px-4 text-[11px] shadow-2xl pointer-events-auto">
+        <button onclick="switchView('home')" id="bnav-home" class="bnav-btn flex flex-col items-center gap-1 text-indigo-400 font-semibold transition">
+          <i data-lucide="book-open" class="w-5 h-5"></i>
+          <span>Chương học</span>
+        </button>
+        <button onclick="switchView('formulas')" id="bnav-formulas" class="bnav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+          <i data-lucide="sigma" class="w-5 h-5"></i>
+          <span>Công thức</span>
+        </button>
+        <button onclick="openRandomQuiz()" id="bnav-quiz" class="bnav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200 transition">
+          <i data-lucide="award" class="w-5 h-5"></i>
+          <span>Luyện đề</span>
+        </button>
+      </div>
+    </nav>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

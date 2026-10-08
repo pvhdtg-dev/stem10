@@ -1,0 +1,4 @@
+# Ignore large PDF textbook files from git repo
+sgk/
+*.pdf
+*.zip

@@ -1,0 +1,75 @@
+/* CSS Styles for STEM 10 Mobile Web */
+
+/* Ẩn scrollbar cho tab ngang */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hiệu ứng trượt Modal mượt mà */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tối ưu render KaTeX trên màn hình mobile */
+.katex-display {
+  margin: 0.5em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
+.katex {
+  font-size: 1.05em;
+  text-rendering: optimizeLegibility;
+}
+
+/* Quiz Option Card Style */
+.quiz-option {
+  transition: all 0.15s ease-in-out;
+}
+
+.quiz-option:active {
+  transform: scale(0.98);
+}
+
+.quiz-option.selected {
+  border-color: #6366f1 !important;
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+.quiz-option.correct {
+  border-color: #10b981 !important;
+  background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+.quiz-option.wrong {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Custom Scrollbar for Modal content */
+#modalBody::-webkit-scrollbar,
+#randomQuizBody::-webkit-scrollbar {
+  width: 4px;
+}
+
+#modalBody::-webkit-scrollbar-thumb,
+#randomQuizBody::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border-radius: 4px;
+}
